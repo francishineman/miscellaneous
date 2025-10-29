@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookmarks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .section {
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .section-header:hover {
+            background: linear-gradient(135deg, #5568d3 0%, #65428b 100%);
+        }
+
+        .section-header h2 {
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .section-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .section-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-height: 1000px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .section-content.collapsed {
+            max-height: 0;
+            padding: 0 20px;
+        }
+
+        .bookmark {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+        }
+
+        .bookmark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .bookmark-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .bookmark-title {
+            font-weight: 600;
+            font-size: 1em;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 768px) {
+            .section-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 My Bookmarks</h1>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>Development</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <a href="https://github.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🐙</div>
+                    <div class="bookmark-title">GitHub</div>
+                </a>
+                <a href="https://stackoverflow.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">📚</div>
+                    <div class="bookmark-title">Stack Overflow</div>
+                </a>
+                <a href="https://developer.mozilla.org" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🦎</div>
+                    <div class="bookmark-title">MDN Web Docs</div>
+                </a>
+                <a href="https://codepen.io" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">✏️</div>
+                    <div class="bookmark-title">CodePen</div>
+                </a>
+                <a href="https://www.freecodecamp.org" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🔥</div>
+                    <div class="bookmark-title">freeCodeCamp</div>
+                </a>
+                <a href="https://css-tricks.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🎨</div>
+                    <div class="bookmark-title">CSS-Tricks</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>Social Media</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <a href="https://twitter.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🐦</div>
+                    <div class="bookmark-title">Twitter</div>
+                </a>
+                <a href="https://linkedin.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">💼</div>
+                    <div class="bookmark-title">LinkedIn</div>
+                </a>
+                <a href="https://reddit.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">🤖</div>
+                    <div class="bookmark-title">Reddit</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>Productivity</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <a href="https://notion.so" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">📝</div>
+                    <div class="bookmark-title">Notion</div>
+                </a>
+                <a href="https://trello.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">📋</div>
+                    <div class="bookmark-title">Trello</div>
+                </a>
+                <a href="https://calendar.google.com" class="bookmark" target="_blank">
+                    <div class="bookmark-icon">📅</div>
+                    <div class="bookmark-title">Google Calendar</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            header.classList.toggle('collapsed');
+            content.classList.toggle('collapsed');
+        }
+
+        // You can add sections by adding more HTML following the same structure
+        // Or programmatically add bookmarks like this:
+        function addBookmark(sectionIndex, title, url, icon) {
+            const sections = document.querySelectorAll('.section-content');
+            if (sections[sectionIndex]) {
+                const bookmark = document.createElement('a');
+                bookmark.href = url;
+                bookmark.className = 'bookmark';
+                bookmark.target = '_blank';
+                bookmark.innerHTML = `
+                    <div class="bookmark-icon">${icon}</div>
+                    <div class="bookmark-title">${title}</div>
+                `;
+                sections[sectionIndex].appendChild(bookmark);
+            }
+        }
+
+        // Example: addBookmark(0, 'My Site', 'https://example.com', '🌐');
+    </script>
+</body>
+</html>
