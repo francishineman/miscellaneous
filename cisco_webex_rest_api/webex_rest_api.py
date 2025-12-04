@@ -15,6 +15,8 @@ PAYLOAD = {
     "title": "Performance Test, Team Meeting"
 }
 
+print(f"\nHTTP Status Code: {response.status_code}\n")
+
 response = requests.request("POST", WEBEX_API_URL, data=json.dumps(PAYLOAD), headers=HEADERS)
 
 print(f"\nHTTP Status Code: {response.status_code}")
