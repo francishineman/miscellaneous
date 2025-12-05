@@ -15,10 +15,18 @@ PAYLOAD = {
     "title": "Performance Test, Team Meeting"
 }
 
-print(f"\nHTTP Status Code: {response.status_code}\n")
-
 try:
     response = requests.request("POST", WEBEX_API_URL, data=json.dumps(PAYLOAD), headers=HEADERS)
+
+    print(f"\nHTTP Status Code: {response.status_code}\n")
+
+    if response.status_code // 100 == 2:
+        print("Successfully created the Webex meeting!")
+        print(json.dumps(response.json(), indent=4))
+    else:
+        print("API request failed!")
+        print("Error Details: (Response Text): (response.text)")
+
 except requests.exceptions.RequestException as e:
     print(f"A network error occurred: {e}")
 except json.JSONDecodeError:
