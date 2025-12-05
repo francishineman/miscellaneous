@@ -17,7 +17,13 @@ PAYLOAD = {
 
 print(f"\nHTTP Status Code: {response.status_code}\n")
 
-response = requests.request("POST", WEBEX_API_URL, data=json.dumps(PAYLOAD), headers=HEADERS)
+try:
+    response = requests.request("POST", WEBEX_API_URL, data=json.dumps(PAYLOAD), headers=HEADERS)
+except requests.exceptions.RequestException as e:
+    print(f"A network error occurred: {e}")
+except json.JSONDecodeError:
+    print("Warning: Could not decode response as JSON.")
+    print(f"Raw Response Text: {response.text}")
 
 print(f"\nHTTP Status Code: {response.status_code}")
 print(json.dumps(response.json(), indent=4))
