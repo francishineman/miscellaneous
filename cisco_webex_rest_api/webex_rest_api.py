@@ -1,10 +1,14 @@
 import requests
 import json
 
-# TOKEN = 'Get token from: https://developer.webex.com/calling/docs/getting-started'
-# This TOKEN is good for 12 hours. After that, you have to get a new token.
 WEBEX_API_TOKEN = "YOUR TOKEN HERE"
 WEBEX_API_URL = "https://webexapis.com/v1/rooms"
+
+if not WEBEX_API_TOKEN:
+    print("ERROR: Webex API Token is missing or is the placeholder. Please set a valid token.")
+    print("Get token from: https://developer.webex.com/calling/docs/getting-started.")
+    print("Token is good for 12 hours. After that, you have to get a new token.")
+    exit(1)
 
 HEADERS = {
     "Authorization": f"Bearer {WEBEX_API_TOKEN}",
