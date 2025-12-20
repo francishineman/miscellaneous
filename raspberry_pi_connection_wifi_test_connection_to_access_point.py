@@ -1,4 +1,5 @@
-import paramiko
+import paramiko 
+import os
 
 def scan_wifi(client):
     print("Scanning for available Wi-Fi networks...")
@@ -26,9 +27,13 @@ def connect_wifi(client, ssid, wifi_password):
         print(f"❌ Failed to connect:\n{error if error else output}")
 
 def main():
-    host = "10.0.0.123"
-    user = "pi_test_user"
-    password = "raspberry_passwd"
+    #RPI_HOST = "10.0.0.123"
+    #RPI_USER = "pi_test_user"
+    #RPI_PASS = "raspberry_passwd"
+    
+    RPI_HOST = os.getenv("RPI_HOST")
+    RPI_USER = os.getenv("RPI_USER")
+    RPI_PASS = os.getenv("RPI_PASS")
     
     target_ssid = "TestNetwork"
     target_pass = "TestPassword"
@@ -36,7 +41,7 @@ def main():
     try:
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        client.connect(hostname=host, username=user, password=password)
+        client.connect(hostname=RPI_HOST, username=RPI_USER, password=RPI_PASS)
 
         scan_wifi(client)
 
