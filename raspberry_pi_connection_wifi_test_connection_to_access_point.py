@@ -48,6 +48,7 @@ def main():
         connect_wifi(client, target_ssid, target_pass)
 
         client.close()
+        print("Connection closed!")
     except Exception as e:
         print(f"Error encountered: {e}")
 
